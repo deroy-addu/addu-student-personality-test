@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,34 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <QuizProvider>{children}</QuizProvider>
+        <QuizProvider>
+          <AppNavbar />
+          {children}
+        </QuizProvider>
       </body>
     </html>
+  );
+}
+
+/**
+ * The links of the `AppNavbar`.
+ */
+const links = [
+  { text: "Home", href: "/" },
+  { text: "Quiz", href: "/quiz" },
+  { text: "Results", href: "/results" },
+];
+
+function AppNavbar() {
+  return (
+    <nav>
+      <ul>
+        {links.map((link, i) => (
+          <li key={i}>
+            <Link href={link.href}>{link.text}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
