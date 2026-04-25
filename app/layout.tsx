@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
-import Link from "next/link";
-import { links } from "@/constants";
-import { uppercase } from "@/utils";
+import AppNavbar from "@/components/AppNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,25 +36,5 @@ export default function RootLayout({
         </QuizProvider>
       </body>
     </html>
-  );
-}
-
-const routes = Object.entries(links).map(([key, value]) => ({
-  text: uppercase(key),
-  href: value,
-}));
-
-function AppNavbar() {
-  return (
-    <nav>
-      <ul>
-        {routes.map((link, i) => (
-          <li key={i}>
-            <Link href={link.href}>{link.text}</Link>
-          </li>
-        ))}
-      </ul>
-      <button>Login</button>
-    </nav>
   );
 }
