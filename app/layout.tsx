@@ -4,7 +4,7 @@ import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
 import Link from "next/link";
 import { links } from "@/constants";
-import { uppercase } from "@/utils/uppercase";
+import { uppercase } from "@/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
