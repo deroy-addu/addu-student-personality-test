@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
 import Link from "next/link";
+import { links } from "@/constants";
+import { uppercase } from "@/utils/uppercase";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,20 +41,16 @@ export default function RootLayout({
   );
 }
 
-/**
- * The links of the `AppNavbar`.
- */
-const links = [
-  { text: "Home", href: "/" },
-  { text: "Quiz", href: "/quiz" },
-  { text: "Results", href: "/results" },
-];
+const routes = Object.entries(links).map(([key, value]) => ({
+  text: uppercase(key),
+  href: value,
+}));
 
 function AppNavbar() {
   return (
     <nav>
       <ul>
-        {links.map((link, i) => (
+        {routes.map((link, i) => (
           <li key={i}>
             <Link href={link.href}>{link.text}</Link>
           </li>
