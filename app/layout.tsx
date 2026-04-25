@@ -56,6 +56,7 @@ function AppNavbar() {
           </li>
         ))}
       </ul>
+      <button>Login</button>
     </nav>
   );
 }
