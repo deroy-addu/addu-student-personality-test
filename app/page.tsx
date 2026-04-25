@@ -8,6 +8,7 @@ export default function LandingPage() {
     <>
       <Header />
       <Personalities />
+      <PrivacyAndLogistics />
       <Footer />
     </>
   );
@@ -78,6 +79,42 @@ function Personalities() {
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+// prettier-ignore
+const privacyAndLogistics = [
+  {
+    title: "100% Anonymous",
+    statement: "Your results are entirely private and are not linked to your academic records.",
+  },
+  {
+    title: "Time Commitment",
+    statement: "The assessment consists of 20 multiple-choice questions and takes approximately 5 minutes.",
+  },
+  {
+    title: "Actionable Insights",
+    statement: "Upon completion, you'll receive a detailed breakdown of your habits and custom study strategies.",
+  },
+];
+
+function PrivacyAndLogistics() {
+  return (
+    <section>
+      <hgroup>
+        <h1>Privacy & Logistics</h1>
+      </hgroup>
+      <ul>
+        {privacyAndLogistics.map(({ title, statement }, i) => (
+          <li key={i}>
+            <p>
+              <span>{title}: </span>
+              {statement}
+            </p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
