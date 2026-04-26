@@ -139,7 +139,7 @@ function PrivacyAndLogistics() {
   return (
     <section className="capped-width">
       <div />
-      <div className="mx-auto w-fit space-y-4 rounded border border-neutral-200 bg-neutral-50 p-12">
+      <div className="mx-auto w-fit space-y-4 rounded border border-slate-200 bg-slate-50 p-12">
         <hgroup className="flex items-center gap-4 text-xl">
           <FaShieldHalved className="text-2xl" />
           <h1 className="font-serif">Privacy & Logistics</h1>
