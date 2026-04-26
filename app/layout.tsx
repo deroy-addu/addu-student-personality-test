@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${notoSans.variable} ${notoSerif.variable} h-full antialiased`}
+      className={`${notoSans.variable} ${notoSerif.variable} text-text-primary h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <QuizProvider>

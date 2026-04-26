@@ -20,16 +20,25 @@ export default function AppNavbar() {
   }
 
   return (
-    <nav>
-      <h1>Student Personality Test</h1>
-      <ul>
-        {routes.map((link, i) => (
-          <li key={i}>
-            <Link href={link.href}>{link.text}</Link>
-          </li>
-        ))}
-      </ul>
-      <button>Login</button>
+    <nav className="border-border capped-width mx-4 border-b py-4">
+      <div />
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-semibold">ADDU Student Personality Test</h1>
+        <ul className="flex gap-8">
+          {routes.map((link, i) => (
+            <li key={i}>
+              <Link
+                href={link.href}
+                className="hover:text-text-primary text-text-secondary"
+              >
+                {link.text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <button className="primary-action">Login</button>
+      </div>
+      <div />
     </nav>
   );
 }
