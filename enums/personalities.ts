@@ -1,6 +1,6 @@
 export const enum Personalities {
-  Procrastinator,
-  Crammer,
-  Balanced,
-  Responsible,
+  Procrastinator = "Procrastinator",
+  Crammer = "Crammer",
+  Balanced = "Balanced",
+  Responsible = "Responsible",
 }
