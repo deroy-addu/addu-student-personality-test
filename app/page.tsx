@@ -93,7 +93,7 @@ function TypesOfPersonalities() {
         </hgroup>
         <div className="my-12 grid grid-cols-4 gap-4">
           {typesOfPersonalities.map(({ personality, description }) => {
-            const { Icon, textColor, bgColor } = personalities[personality];
+            const { Icon, color, bgSubtle } = personalities[personality];
 
             return (
               <div
@@ -101,7 +101,7 @@ function TypesOfPersonalities() {
                 className="rounded bg-white p-12 shadow-md/5"
               >
                 <div
-                  className={`${textColor} ${bgColor} w-fit rounded-full p-4 text-xl`}
+                  className={`${color} ${bgSubtle} w-fit rounded-full p-4 text-xl`}
                 >
                   <Icon />
                 </div>
