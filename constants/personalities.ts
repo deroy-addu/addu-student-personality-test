@@ -9,22 +9,26 @@ import {
 export const personalities = {
   [Personalities.Procrastinator]: {
     Icon: FaHourglassHalf,
-    textColor: "text-procrastinator",
-    bgColor: "bg-procrastinator-subtle",
+    color: "text-procrastinator",
+    bg: "bg-procrastinator",
+    bgSubtle: "bg-procrastinator-subtle",
   },
   [Personalities.Crammer]: {
     Icon: FaFire,
-    textColor: "text-crammer",
-    bgColor: "bg-crammer-subtle",
+    color: "text-crammer",
+    bg: "bg-crammer",
+    bgSubtle: "bg-crammer-subtle",
   },
   [Personalities.Balanced]: {
     Icon: FaScaleBalanced,
-    textColor: "text-balanced",
-    bgColor: "bg-balanced-subtle",
+    color: "text-balanced",
+    bg: "bg-balanced",
+    bgSubtle: "bg-balanced-subtle",
   },
   [Personalities.Responsible]: {
     Icon: FaClipboardCheck,
-    textColor: "text-responsible",
-    bgColor: "bg-responsible-subtle",
+    color: "text-responsible",
+    bg: "bg-responsible",
+    bgSubtle: "bg-responsible-subtle",
   },
 };
