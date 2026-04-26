@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
+import { Noto_Sans, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
 import AppNavbar from "@/components/AppNavbar";
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+});
+
+const notoSerif = Noto_Serif({
+  variable: "--font-noto-serif",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className={`${notoSans.variable} ${notoSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <QuizProvider>
