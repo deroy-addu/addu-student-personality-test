@@ -21,6 +21,7 @@ export default function AppNavbar() {
 
   return (
     <nav>
+      <h1>Student Personality Test</h1>
       <ul>
         {routes.map((link, i) => (
           <li key={i}>
