@@ -1,7 +1,9 @@
 "use client";
 
+import { links } from "@/constants";
 import { useQuizContext } from "@/contexts/QuizContext";
 import { cn } from "@/utils";
+import { useRouter } from "next/navigation";
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -98,7 +100,13 @@ const Choices = () => {
 };
 
 const Navigator = () => {
-  const { previous, next } = useQuizContext();
+  const {
+    page: { current, max },
+    previous,
+    next,
+  } = useQuizContext();
+  const router = useRouter();
+  const isLastQuestion = current === max;
 
   return (
     <div className="flex justify-between">
@@ -110,10 +118,16 @@ const Navigator = () => {
         Back
       </button>
       <button
-        onClick={next}
+        onClick={() => {
+          if (isLastQuestion) {
+            router.push(links.results);
+          } else {
+            next();
+          }
+        }}
         className="primary-action btn-with-icon"
       >
-        Next Question
+        {isLastQuestion ? "Finish Quiz" : "Next Question"}
         <FaArrowRight />
       </button>
     </div>
