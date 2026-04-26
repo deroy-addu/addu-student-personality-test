@@ -1,12 +1,23 @@
 "use client";
 
 import { useQuizContext } from "@/contexts/QuizContext";
+import { cn } from "@/utils";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaRegCircle,
+  FaRegCircleDot,
+} from "react-icons/fa6";
 
 export default function QuizPage() {
   return (
-    <main>
-      <Progress />
-      <Question />
+    <main className="capped-width grid min-h-screen place-items-center">
+      <div />
+      <div className="mx-auto w-full space-y-12">
+        <Question />
+        <Progress />
+      </div>
+      <div />
     </main>
   );
 }
@@ -19,12 +30,15 @@ function Progress() {
   const progress = (current / max) * 100;
 
   return (
-    <div>
-      <span>
-        Question {current} of {max}
-      </span>
-      <div>
-        <div style={{ width: `${progress}%` }} />
+    <div className="fixed bottom-0 left-0 w-full text-center">
+      <p className="text-text-primary font-semibold">
+        {current} of {max}
+      </p>
+      <div className="mt-2 h-4 overflow-hidden bg-slate-200">
+        <div
+          style={{ width: `${progress}%` }}
+          className="bg-text-primary h-full"
+        />
       </div>
     </div>
   );
@@ -32,7 +46,7 @@ function Progress() {
 
 function Question() {
   return (
-    <article>
+    <article className="space-y-12 rounded">
       <Question.Text />
       <Question.Choices />
       <Question.Navigator />
@@ -47,22 +61,36 @@ const Text = () => {
     },
   } = useQuizContext();
 
-  return <h1>{question}</h1>;
+  return <h1 className="text-center font-serif text-4xl">{question}</h1>;
 };
 
 const Choices = () => {
   const {
-    quiz: {
-      current: { choices },
-    },
+    quiz: { current },
     answer,
   } = useQuizContext();
 
   return (
-    <ul>
-      {choices.map((choice, i) => (
-        <li key={i}>
-          <button onClick={() => answer(i)}>{choice}</button>
+    <ul className="space-y-4">
+      {current.choices.map((choice, i) => (
+        <li
+          key={i}
+          className={cn(
+            "outline-border rounded shadow-md/5 outline",
+            current.answer === i && "outline-accent-blue bg-blue-50 outline-2",
+          )}
+        >
+          <button
+            onClick={() => answer(i)}
+            className="flex w-full items-center gap-4 px-8 py-4 text-start"
+          >
+            {current.answer === i ? (
+              <FaRegCircleDot className="text-accent-blue" />
+            ) : (
+              <FaRegCircle />
+            )}
+            {choice}
+          </button>
         </li>
       ))}
     </ul>
@@ -73,9 +101,21 @@ const Navigator = () => {
   const { previous, next } = useQuizContext();
 
   return (
-    <div>
-      <button onClick={previous}>Back</button>
-      <button onClick={next}>Next Question</button>
+    <div className="flex justify-between">
+      <button
+        onClick={previous}
+        className="ghost-action btn-with-icon"
+      >
+        <FaArrowLeft />
+        Back
+      </button>
+      <button
+        onClick={next}
+        className="primary-action btn-with-icon"
+      >
+        Next Question
+        <FaArrowRight />
+      </button>
     </div>
   );
 };

@@ -43,8 +43,16 @@
   .capped-width {
     @apply grid grid-cols-[auto_minmax(0,1500)_auto];
   }
+  
+  .btn-with-icon {
+    @apply flex items-center gap-2;
+  }
 
   .primary-action {
     @apply px-4 py-2 bg-bg-tertiery text-text-tertiery rounded;
+  }
+
+  .ghost-action {
+    @apply px-4 py-2 text-text-secondary hover:bg-slate-100 rounded;
   }
 }
