@@ -20,7 +20,7 @@ export default function AppNavbar() {
   }
 
   return (
-    <nav className="border-border capped-width mx-4 border-b py-4">
+    <nav className="border-border capped-width absolute mx-4 max-h-20 w-full border-b bg-white py-4">
       <div />
       <div className="flex items-center justify-between">
         <Link href={links.home}>
