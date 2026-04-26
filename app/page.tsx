@@ -7,7 +7,7 @@ import { FaCheck, FaRegClock, FaShieldHalved } from "react-icons/fa6";
 
 export default function LandingPage() {
   return (
-    <div className="space-y-16 pt-16">
+    <div className="mt-20 space-y-16 pt-16">
       <Header />
       <TypesOfPersonalities />
       <PrivacyAndLogistics />
