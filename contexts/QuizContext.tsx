@@ -27,6 +27,11 @@ const QuizContext = React.createContext<{
        * The choices for the current question.
        */
       choices: string[];
+
+      /**
+       * The chosen choice index for the current question.
+       */
+      answer: number;
     };
   };
   page: {
@@ -107,6 +112,7 @@ export default function QuizProvider({ children }: React.PropsWithChildren) {
           current: {
             question: questions[current],
             choices: choices[current],
+            answer: answers[current],
           },
         },
         page: {
