@@ -24,7 +24,7 @@ export default function AppNavbar() {
       <div />
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">ADDU Student Personality Test</h1>
-        <ul className="flex gap-8">
+        <ul className="flex gap-4">
           {routes.map(({ text, href }, i) => {
             const isActive =
               href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -34,8 +34,9 @@ export default function AppNavbar() {
                 <Link
                   href={href}
                   className={cn(
-                    "hover:text-text-primary text-text-secondary",
-                    isActive && "text-text-primary underline",
+                    "hover:text-text-primary text-text-secondary pb-1",
+                    isActive &&
+                      "text-text-primary border-text-primary border-b-2",
                   )}
                 >
                   {text}
