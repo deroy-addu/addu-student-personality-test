@@ -23,7 +23,11 @@ export default function AppNavbar() {
     <nav className="border-border capped-width mx-4 border-b py-4">
       <div />
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">ADDU Student Personality Test</h1>
+        <Link href={links.home}>
+          <h1 className="text-xl font-semibold">
+            ADDU Student Personality Test
+          </h1>
+        </Link>
         <ul className="flex gap-4">
           {routes.map(({ text, href }, i) => {
             const isActive =
