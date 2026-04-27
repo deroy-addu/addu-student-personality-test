@@ -57,9 +57,12 @@ export default function GlobalNavbar() {
               );
             })}
           </ul>
-          <button className="rounded-md bg-gray-900 px-4 py-2 text-white">
+          <Link
+            href={links.login.path}
+            className="rounded-md bg-gray-900 px-4 py-2 text-white"
+          >
             Login
-          </button>
+          </Link>
         </div>
       </div>
       <div />
