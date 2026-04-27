@@ -28,29 +28,31 @@ export default function GlobalNavbar() {
             ADDU Student Personality Test
           </h1>
         </Link>
-        <ul className="flex gap-8">
-          {routes.map(({ text, href }, i) => {
-            const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
+        <div className="flex items-center gap-12">
+          <ul className="flex gap-8">
+            {routes.map(({ text, href }, i) => {
+              const isActive =
+                href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-            return (
-              <li key={i}>
-                <Link
-                  href={href}
-                  className={cn(
-                    "pb-1 text-gray-500 hover:text-gray-900",
-                    isActive && "border-b-2 border-gray-900 text-gray-900",
-                  )}
-                >
-                  {text}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-        <button className="rounded-md bg-gray-900 px-4 py-2 text-white">
-          Login
-        </button>
+              return (
+                <li key={i}>
+                  <Link
+                    href={href}
+                    className={cn(
+                      "pb-1 text-gray-500 hover:text-gray-900",
+                      isActive && "border-b-2 border-gray-900 text-gray-900",
+                    )}
+                  >
+                    {text}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <button className="rounded-md bg-gray-900 px-4 py-2 text-white">
+            Login
+          </button>
+        </div>
       </div>
       <div />
     </nav>
