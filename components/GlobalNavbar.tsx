@@ -19,7 +19,7 @@ const allowedPaths = [links.home, links.results];
 export default function GlobalNavbar() {
   const pathname = usePathname();
 
-  if (!allowedPaths.find(({ path }) => path === pathname)) {
+  if (!allowedPaths.some(({ path }) => path === pathname)) {
     return;
   }
 
