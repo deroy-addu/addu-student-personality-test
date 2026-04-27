@@ -1,58 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-accent-blue: #3b82f6;
-  --color-accent-green: #15b581;
+  --color-procrastinator: var(--color-rose-500);
+  --color-crammer: var(--color-amber-500);
+  --color-balanced: var(--color-indigo-500);
+  --color-responsible: var(--color-emerald-500);
 
-  --color-border: #e7e8ec;
-
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f1f4f9;
-  --color-bg-tertiery: #0f172a;
-
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #4d5563;
-  --color-text-tertiery: #ffffff;
-
-  --color-procrastinator: #3b82f6;
-  --color-crammer: #ef4346;
-  --color-balanced: #a758fa;
-  --color-responsible: #1fc760;
-
-  --color-procrastinator-subtle: #eff6ff;
-  --color-crammer-subtle: #fef2f3;
-  --color-balanced-subtle: #fbf5ff;
-  --color-responsible-subtle: #f0fdf4;
+  --color-procrastinator-subtle: var(--color-rose-100);
+  --color-crammer-subtle: var(--color-amber-100);
+  --color-balanced-subtle: var(--color-indigo-100);
+  --color-responsible-subtle: var(--color-emerald-100);
 
   --font-sans: var(--font-noto-sans);
   --font-serif: var(--font-noto-serif);
-}
-
-@layer components {
-  /* 
-    When using this, make sure to follow the format:
-
-    ```tsx
-    <div className="capped-width">
-      <div />
-      <div>{children}</div>
-      <div />
-    </div>
-    ```
-  */
-  .capped-width {
-    @apply grid grid-cols-[auto_minmax(0,1500)_auto];
-  }
-  
-  .btn-with-icon {
-    @apply flex items-center gap-2;
-  }
-
-  .primary-action {
-    @apply px-4 py-2 bg-bg-tertiery text-text-tertiery rounded;
-  }
-
-  .ghost-action {
-    @apply px-4 py-2 text-text-secondary hover:bg-slate-100 rounded;
-  }
 }

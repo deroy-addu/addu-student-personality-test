@@ -13,14 +13,16 @@ import {
 
 export default function QuizPage() {
   return (
-    <main className="capped-width grid min-h-screen place-items-center">
-      <div />
-      <div className="mx-auto w-full space-y-12">
-        <Question />
-        <Progress />
+    <>
+      <div className="grid grid-cols-[auto_minmax(0,1500)_auto] place-items-center">
+        <div />
+        <div className="mx-auto w-full space-y-12">
+          <Question />
+        </div>
+        <div />
       </div>
-      <div />
-    </main>
+      <Progress />
+    </>
   );
 }
 
@@ -32,14 +34,14 @@ function Progress() {
   const progress = (current / max) * 100;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full text-center">
-      <p className="text-text-primary font-semibold">
+    <div className="fixed bottom-0 w-full text-center">
+      <p className="font-semibold text-gray-900">
         {current} of {max}
       </p>
-      <div className="mt-2 h-4 overflow-hidden bg-slate-200">
+      <div className="mt-2 h-4 overflow-hidden bg-gray-200">
         <div
           style={{ width: `${progress}%` }}
-          className="bg-text-primary h-full"
+          className="h-full bg-gray-900"
         />
       </div>
     </div>
@@ -48,7 +50,7 @@ function Progress() {
 
 function Question() {
   return (
-    <article className="space-y-12 rounded">
+    <article className="space-y-12 rounded-md">
       <Question.Text />
       <Question.Choices />
       <Question.Navigator />
@@ -78,8 +80,8 @@ const Choices = () => {
         <li
           key={i}
           className={cn(
-            "outline-border rounded shadow-md/5 outline",
-            current.answer === i && "outline-accent-blue bg-blue-50 outline-2",
+            "rounded-md shadow-md/5 outline outline-gray-300",
+            current.answer === i && "bg-blue-50 outline-2 outline-blue-500",
           )}
         >
           <button
@@ -87,7 +89,7 @@ const Choices = () => {
             className="flex w-full items-center gap-4 px-8 py-4 text-start"
           >
             {current.answer === i ? (
-              <FaRegCircleDot className="text-accent-blue" />
+              <FaRegCircleDot className="text-blue-500" />
             ) : (
               <FaRegCircle />
             )}
@@ -112,7 +114,7 @@ const Navigator = () => {
     <div className="flex justify-between">
       <button
         onClick={previous}
-        className="ghost-action btn-with-icon"
+        className="flex items-center gap-2 rounded-md px-4 py-2 text-gray-500 hover:bg-gray-100"
       >
         <FaArrowLeft />
         Back
@@ -125,7 +127,7 @@ const Navigator = () => {
             next();
           }
         }}
-        className="primary-action btn-with-icon"
+        className="flex items-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-white"
       >
         {isLastQuestion ? "Finish Quiz" : "Next Question"}
         <FaArrowRight />

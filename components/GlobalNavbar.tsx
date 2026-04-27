@@ -12,7 +12,7 @@ const routes = Object.entries(links).map(([key, value]) => ({
 
 const paths = new Set(Object.values(links));
 
-export default function AppNavbar() {
+export default function GlobalNavbar() {
   const pathname = usePathname();
 
   if (!paths.has(pathname)) {
@@ -20,7 +20,7 @@ export default function AppNavbar() {
   }
 
   return (
-    <nav className="border-border capped-width absolute z-99999 max-h-20 w-full border-b bg-white py-4">
+    <nav className="grid max-h-20 w-full grid-cols-[auto_minmax(0,1500)_auto] border-b border-gray-300 bg-white py-4">
       <div />
       <div className="flex items-center justify-between">
         <Link href={links.home}>
@@ -28,7 +28,7 @@ export default function AppNavbar() {
             ADDU Student Personality Test
           </h1>
         </Link>
-        <ul className="flex gap-4">
+        <ul className="flex gap-8">
           {routes.map(({ text, href }, i) => {
             const isActive =
               href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -38,9 +38,8 @@ export default function AppNavbar() {
                 <Link
                   href={href}
                   className={cn(
-                    "hover:text-text-primary text-text-secondary pb-1",
-                    isActive &&
-                      "text-text-primary border-text-primary border-b-2",
+                    "pb-1 text-gray-500 hover:text-gray-900",
+                    isActive && "border-b-2 border-gray-900 text-gray-900",
                   )}
                 >
                   {text}
@@ -49,7 +48,9 @@ export default function AppNavbar() {
             );
           })}
         </ul>
-        <button className="primary-action">Login</button>
+        <button className="rounded-md bg-gray-900 px-4 py-2 text-white">
+          Login
+        </button>
       </div>
       <div />
     </nav>

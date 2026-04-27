@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Sans, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
-import AppNavbar from "@/components/AppNavbar";
+import GlobalNavbar from "@/components/GlobalNavbar";
+import GlobalFooter from "@/components/GlobalFooter";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -27,12 +28,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${notoSans.variable} ${notoSerif.variable} text-text-primary h-full antialiased`}
+      className={`${notoSans.variable} ${notoSerif.variable} h-full text-gray-900 antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-screen flex-col">
         <QuizProvider>
-          <AppNavbar />
-          {children}
+          <GlobalNavbar />
+          <div className="flex min-h-full flex-1 flex-col justify-center py-16">
+            {children}
+          </div>
+          <GlobalFooter />
         </QuizProvider>
       </body>
     </html>

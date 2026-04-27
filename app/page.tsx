@@ -7,25 +7,24 @@ import { FaCheck, FaRegClock, FaShieldHalved } from "react-icons/fa6";
 
 export default function LandingPage() {
   return (
-    <div className="mt-20 space-y-16 pt-16">
+    <div className="space-y-16">
       <Header />
       <TypesOfPersonalities />
       <PrivacyAndLogistics />
-      <Footer />
     </div>
   );
 }
 
 function Header() {
   return (
-    <header className="capped-width">
+    <header className="grid grid-cols-[auto_minmax(0,1500)_auto]">
       <div />
       <div className="grid grid-cols-2 gap-12">
         <div>
           <Image
             src={AdduImage}
             alt="Addu Image"
-            className="w-full rounded"
+            className="w-full rounded-md"
           />
         </div>
         <div className="space-y-4 self-center">
@@ -33,7 +32,7 @@ function Header() {
             <h1 className="font-serif text-4xl">
               Discover Your Learning Style.
             </h1>
-            <p className="text-text-secondary">
+            <p className="text-gray-500">
               Take our comprehensive 5-minute personality test to find out what
               kind of student you really are. Optimize your study habits based
               on your unique profile.
@@ -42,11 +41,11 @@ function Header() {
           <div className="flex items-center gap-4">
             <Link
               href={links.quiz}
-              className="primary-action"
+              className="rounded-md bg-gray-900 px-4 py-2 text-white"
             >
               Start Quiz
             </Link>
-            <small className="text-text-secondary flex items-center gap-1 text-sm">
+            <small className="flex items-center gap-1 text-sm text-gray-500">
               <FaRegClock /> Takes 5 minutes
             </small>
           </div>
@@ -79,14 +78,14 @@ const typesOfPersonalities = [
 
 function TypesOfPersonalities() {
   return (
-    <section className="capped-width bg-bg-secondary py-12">
+    <section className="grid grid-cols-[auto_minmax(0,1500)_auto] bg-gray-100 py-12">
       <div />
       <div>
         <hgroup className="space-y-4 text-center">
           <h1 className="font-serif text-4xl">
             Four Types of Student Personalities
           </h1>
-          <p className="text-text-secondary">
+          <p className="text-gray-500">
             Understanding your category helps tailor your academic approach for
             maximum success.
           </p>
@@ -98,7 +97,7 @@ function TypesOfPersonalities() {
             return (
               <div
                 key={personality}
-                className="rounded bg-white p-12 shadow-md/5"
+                className="rounded-md bg-white p-12 shadow-md/5"
               >
                 <div
                   className={`${color} ${bgSubtle} w-fit rounded-full p-4 text-xl`}
@@ -108,7 +107,7 @@ function TypesOfPersonalities() {
                 <h2 className="mt-4 text-lg font-semibold">
                   The {personality}
                 </h2>
-                <p className="text-text-secondary mt-2">{description}</p>
+                <p className="mt-2 text-gray-500">{description}</p>
               </div>
             );
           })}
@@ -137,20 +136,20 @@ const privacyAndLogistics = [
 
 function PrivacyAndLogistics() {
   return (
-    <section className="capped-width">
+    <section className="grid grid-cols-[auto_minmax(0,1500)_auto]">
       <div />
-      <div className="mx-auto w-fit space-y-4 rounded border border-slate-200 bg-slate-50 p-12">
+      <div className="mx-auto w-fit space-y-4 rounded-md border border-gray-200 bg-gray-50 p-12">
         <hgroup className="flex items-center gap-4 text-xl">
           <FaShieldHalved className="text-2xl" />
           <h1 className="font-serif">Privacy & Logistics</h1>
         </hgroup>
-        <ul className="text-text-secondary space-y-2">
+        <ul className="space-y-2 text-gray-500">
           {privacyAndLogistics.map(({ title, statement }, i) => (
             <li
               key={i}
               className="flex items-center gap-2"
             >
-              <FaCheck className="text-accent-green" />
+              <FaCheck className="text-emerald-500" />
               <p>
                 <span className="font-semibold">{title}: </span>
                 {statement}
@@ -161,25 +160,5 @@ function PrivacyAndLogistics() {
       </div>
       <div />
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-bg-tertiery capped-width h-full">
-      <div />
-      <div className="text-text-tertiery py-4 text-center">
-        &copy; 2026{" "}
-        <a
-          href="https://www.addu.edu.ph/"
-          target="_blank"
-          className="hover:underline"
-        >
-          Ateneo de Davao University
-        </a>
-        . All rights reserved.
-      </div>
-      <div />
-    </footer>
   );
 }

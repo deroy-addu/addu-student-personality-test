@@ -1,19 +1,31 @@
+import { personalities } from "@/constants";
 import { Personalities } from "@/enums";
-import Link from "next/link";
+import { BiSolidZap } from "react-icons/bi";
+import {
+  FaBookOpen,
+  FaBrain,
+  FaChartPie,
+  FaCheck,
+  FaPeopleGroup,
+} from "react-icons/fa6";
 
 export default function ResultsPage() {
   return (
-    <div>
-      <PersonalitySummary />
-      <div>
+    <div className="space-y-16">
+      <div className="grid grid-cols-[auto_minmax(0,1500)_auto]">
+        <div />
         <div>
+          <PersonalitySummary />
+        </div>
+        <div />
+      </div>
+      <div className="grid grid-cols-[auto_minmax(0,1500)_auto]">
+        <div />
+        <div className="grid grid-cols-2 gap-12">
           <TraitBreakdown />
-          <CampusMatches />
-        </div>
-        <div>
           <KeyStrengths />
-          <OptimalStudyHabits />
         </div>
+        <div />
       </div>
     </div>
   );
@@ -27,12 +39,27 @@ const personalitySummary = {
 };
 
 function PersonalitySummary() {
+  const { Icon, color, bg, bgSubtle } =
+    personalities[personalitySummary.personality];
+
   return (
-    <section>
+    <section className="flex items-center justify-center gap-12">
+      <div className={`relative rounded-full p-12 ${bgSubtle}`}>
+        <Icon className={`text-5xl ${color}`} />
+        <span
+          className={`absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-sm font-semibold whitespace-nowrap text-white ${bg}`}
+        >
+          Type{" "}
+          {Object.keys(personalities).indexOf(personalitySummary.personality) +
+            1}
+        </span>
+      </div>
       <hgroup>
-        <small>Your Profile Match</small>
-        <h1>{personalitySummary.title}</h1>
-        <p>{personalitySummary.description}</p>
+        <p className="text-gray-500">Your profile match</p>
+        <h1 className="mt-1 font-serif text-4xl font-semibold">
+          {personalitySummary.title}
+        </h1>
+        <p className="mt-2 text-gray-500">{personalitySummary.description}</p>
       </hgroup>
     </section>
   );
@@ -42,80 +69,58 @@ const traitBreakdown = [
   {
     type: "Time Management",
     percentage: 85,
+    style: {
+      backgroundColor: "bg-balanced",
+    },
   },
   {
     type: "Adaptability",
     percentage: 72,
+    style: {
+      backgroundColor: "bg-responsible",
+    },
   },
   {
     type: "Stress Tolerance",
     percentage: 90,
+    style: {
+      backgroundColor: "bg-crammer",
+    },
   },
   {
     type: "Procrastination",
     percentage: 25,
+    style: {
+      backgroundColor: "bg-procrastinator",
+    },
   },
 ];
 
 function TraitBreakdown() {
   return (
-    <section>
-      <hgroup>
-        <h1>Trait Breakdown</h1>
+    <section className="space-y-4 rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+      <hgroup className="flex items-center gap-2 text-lg">
+        <FaChartPie className="text-gray-900" />
+        <h1 className="font-semibold">Trait Breakdown</h1>
       </hgroup>
-      <div>
-        {traitBreakdown.map(({ type, percentage }, i) => (
+      <div className="space-y-4">
+        {traitBreakdown.map(({ type, percentage, style }, i) => (
           <div key={i}>
-            <div>
+            <div className="flex items-center justify-between">
               <p>{type}</p>
-              <p>{percentage}%</p>
+              <p className="text-sm font-semibold text-gray-900">
+                {percentage}%
+              </p>
             </div>
-            <div>
-              <div style={{ width: `${percentage}%` }} />
+            <div className="mt-2 h-2 overflow-hidden bg-gray-200">
+              <div
+                style={{ width: `${percentage}%` }}
+                className={`h-full ${style.backgroundColor}`}
+              />
             </div>
           </div>
         ))}
       </div>
-    </section>
-  );
-}
-
-const campusMatches = [
-  {
-    activity: "Student Council",
-    description: "Leverage your organizational skills",
-    href: "/error",
-  },
-  {
-    activity: "Peer Tutoring",
-    description: "Help others find their balance",
-    href: "/error",
-  },
-  {
-    activity: "Debate Club",
-    description: "Structured, thoughtful engagement",
-    href: "/error",
-  },
-];
-
-function CampusMatches() {
-  return (
-    <section>
-      <hgroup>
-        <h1>CampusMatches</h1>
-        <p>Based on your profile, we recommend these activities:</p>
-      </hgroup>
-      <ul>
-        {campusMatches.map(({ activity, description, href }, i) => (
-          <Link
-            key={i}
-            href={href}
-          >
-            <h2>{activity}</h2>
-            <p>{description}</p>
-          </Link>
-        ))}
-      </ul>
     </section>
   );
 }
@@ -124,54 +129,75 @@ const keyStrengths = [
   {
     description: "Consistent Pacing",
     statement: "You rarely need to pull all-nighters.",
+    style: {
+      Icon: FaCheck,
+      textColor: "text-blue-500",
+      backgroundColor: "bg-blue-100",
+    },
   },
   {
     description: "Clear Priorities",
     statement: "You know when to study and when to rest.",
+    style: {
+      Icon: FaBrain,
+      textColor: "text-blue-500",
+      backgroundColor: "bg-blue-100",
+    },
   },
   {
     description: "Group Facilitator",
     statement: "Great at keeping team projects on track.",
+    style: {
+      Icon: FaPeopleGroup,
+      textColor: "text-blue-500",
+      backgroundColor: "bg-blue-100",
+    },
   },
   {
     description: "Holistic Learning",
     statement: "You absorb concepts rather than memorizing.",
+    style: {
+      Icon: FaBookOpen,
+      textColor: "text-blue-500",
+      backgroundColor: "bg-blue-100",
+    },
   },
 ];
 
 function KeyStrengths() {
   return (
-    <section>
-      <hgroup>
-        <h1>Key Strengths</h1>
+    <section className="rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+      <hgroup className="flex items-center gap-2 text-lg">
+        <BiSolidZap className="text-gray-900" />
+        <h1 className="font-semibold">Key Strengths</h1>
       </hgroup>
-      <div>
-        {keyStrengths.map(({ description, statement }, i) => (
-          <div key={i}>
-            <h2>{description}</h2>
-            <p>{statement}</p>
-          </div>
-        ))}
+      <div className="mt-4 grid grid-cols-2 gap-4">
+        {keyStrengths.map(
+          (
+            {
+              description,
+              statement,
+              style: { Icon, textColor, backgroundColor },
+            },
+            i,
+          ) => (
+            <div
+              key={i}
+              className="flex items-center gap-4 rounded-md border border-gray-200 p-4"
+            >
+              <div
+                className={`w-fit rounded-md p-4 text-xl ${backgroundColor}`}
+              >
+                <Icon className={`${textColor}`} />
+              </div>
+              <div>
+                <h2 className="font-semibold">{description}</h2>
+                <p className="text-sm text-gray-500">{statement}</p>
+              </div>
+            </div>
+          ),
+        )}
       </div>
-    </section>
-  );
-}
-
-const optimalStudyHabits = [
-  "Use the Pomodoro technique (25min work, 5min break) to maintain focus.",
-  "Schedule specific blocks for assignments early in the week.",
-  "Mix group study sessions with independent review time.",
-];
-
-function OptimalStudyHabits() {
-  return (
-    <section>
-      <h1>Optimal Study Habits</h1>
-      <ul>
-        {optimalStudyHabits.map((optimalStudyHabit, i) => (
-          <li key={i}>{optimalStudyHabit}</li>
-        ))}
-      </ul>
     </section>
   );
 }
