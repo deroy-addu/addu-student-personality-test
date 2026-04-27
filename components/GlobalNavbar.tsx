@@ -5,20 +5,21 @@ import { cn, uppercase } from "@/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const routes = Object.entries(links).map(([key, value]) => ({
+const routes = Object.entries(links).map(([key, { path, show }]) => ({
   text: uppercase(key),
-  href: value,
+  href: path,
+  show,
 }));
 
 /**
  * The paths where this component will show.
  */
-const allowedPaths = new Set([links.home, links.results]);
+const allowedPaths = [links.home, links.results];
 
 export default function GlobalNavbar() {
   const pathname = usePathname();
 
-  if (!allowedPaths.has(pathname)) {
+  if (!allowedPaths.find(({ path }) => path === pathname)) {
     return;
   }
 
@@ -26,14 +27,18 @@ export default function GlobalNavbar() {
     <nav className="grid max-h-20 w-full grid-cols-[auto_minmax(0,1500)_auto] border-b border-gray-300 bg-white py-4">
       <div />
       <div className="flex items-center justify-between">
-        <Link href={links.home}>
+        <Link href={links.home.path}>
           <h1 className="text-xl font-semibold">
             ADDU Student Personality Test
           </h1>
         </Link>
         <div className="flex items-center gap-12">
           <ul className="flex gap-8">
-            {routes.map(({ text, href }, i) => {
+            {routes.map(({ text, href, show }, i) => {
+              if (!show) {
+                return;
+              }
+
               const isActive =
                 href === "/" ? pathname === "/" : pathname.startsWith(href);
 
