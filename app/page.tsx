@@ -29,7 +29,7 @@ function Header() {
         </div>
         <div className="space-y-4 self-center">
           <hgroup className="space-y-4">
-            <h1 className="font-serif text-4xl">
+            <h1 className="font-serif text-4xl font-semibold">
               Discover Your Learning Style.
             </h1>
             <p className="text-gray-500">
