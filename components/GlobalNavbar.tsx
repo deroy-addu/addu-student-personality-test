@@ -10,12 +10,15 @@ const routes = Object.entries(links).map(([key, value]) => ({
   href: value,
 }));
 
-const paths = new Set(Object.values(links));
+/**
+ * The paths where this component will show.
+ */
+const allowedPaths = new Set([links.home, links.results]);
 
 export default function GlobalNavbar() {
   const pathname = usePathname();
 
-  if (!paths.has(pathname)) {
+  if (!allowedPaths.has(pathname)) {
     return;
   }
 
