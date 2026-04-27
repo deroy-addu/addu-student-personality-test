@@ -27,7 +27,7 @@ function Header() {
             className="w-full rounded-md"
           />
         </div>
-        <div className="space-y-4 self-center">
+        <div className="space-y-8 self-center">
           <hgroup className="space-y-4">
             <h1 className="font-serif text-4xl font-semibold">
               Discover your learning style.
