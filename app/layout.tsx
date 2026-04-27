@@ -30,15 +30,17 @@ export default function RootLayout({
       lang="en"
       className={`${notoSans.variable} ${notoSerif.variable} h-full text-gray-900 antialiased`}
     >
-      <body className="flex min-h-screen flex-col">
-        <QuizProvider>
-          <GlobalNavbar />
-          <div className="flex min-h-full flex-1 flex-col justify-center py-16">
-            {children}
+      <QuizProvider>
+        <body className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-1 flex-col">
+            <GlobalNavbar />
+            <div className="flex flex-1 flex-col justify-center py-16">
+              {children}
+            </div>
           </div>
           <GlobalFooter />
-        </QuizProvider>
-      </body>
+        </body>
+      </QuizProvider>
     </html>
   );
 }
