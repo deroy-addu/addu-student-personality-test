@@ -122,7 +122,7 @@ const Navigator = () => {
       <button
         onClick={() => {
           if (isLastQuestion) {
-            router.push(links.results);
+            router.push(links.results.path);
           } else {
             next();
           }

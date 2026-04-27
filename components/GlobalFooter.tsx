@@ -3,10 +3,12 @@
 import { links } from "@/constants";
 import { usePathname } from "next/navigation";
 
+const allowedPaths = [links.home, links.login, links.results];
+
 export default function GlobalFooter() {
   const pathname = usePathname();
 
-  if (links.quiz === pathname) {
+  if (!allowedPaths.some(({ path }) => path === pathname)) {
     return;
   }
 
