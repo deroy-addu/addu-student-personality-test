@@ -22,6 +22,14 @@ export const questions = [
   "In general, how do you approach academic responsibilities in terms of urgency, discipline, and long-term planning?",
 ];
 
+/**
+ * Each subarray index elements corresponds to a personality type.
+ *
+ * - `0` - Procrastinator
+ * - `1` - Crammer
+ * - `3` - Balanced
+ * - `4` - Responsible
+ */
 // prettier-ignore
 export const choices = [
   [
