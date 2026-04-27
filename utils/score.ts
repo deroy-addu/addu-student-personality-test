@@ -1,7 +1,21 @@
+/**
+ * @remarks Computation is done by AI.
+ */
+
 import { Characteristics, Personalities } from "@/enums";
 
 /**
- * Converts answer counts into percentage distribution per personality type.
+ * Converts answer counts into percentage per personality.
+ *
+ * ```text
+ * For each personality:
+ *
+ *   percentage =
+ *     (number of answers for that personality / total number of questions)
+ *     * 100
+ *
+ * All percentages combined should add up to 100%.
+ * ```
  */
 export function personalityScore(
   answerCounts: Record<Personalities, number>,
@@ -22,7 +36,24 @@ export function personalityScore(
 }
 
 /**
- * Computes characteristic scores based on personality percentages and weights.
+ * Computes characteristic scores using personality percentages and weights.
+ *
+ * ```text
+ * For each characteristic:
+ *
+ *   1. Multiply each personality percentage by its weight
+ *   2. Add all those values together
+ *   3. Divide the total by 100
+ *
+ * Formula:
+ *
+ *   characteristic_score =
+ *     sum(personality_percentage * weight) / 100
+ *
+ * Notes:
+ * - Weights usually range from 0 to 1
+ * - Final score will also be between 0 and 1
+ * ```
  */
 export function characteristicScore(
   personalityPercentages: Record<Personalities, number>,
