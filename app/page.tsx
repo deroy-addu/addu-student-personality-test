@@ -30,7 +30,7 @@ function Header() {
         <div className="space-y-4 self-center">
           <hgroup className="space-y-4">
             <h1 className="font-serif text-4xl font-semibold">
-              Discover Your Learning Style.
+              Discover your learning style.
             </h1>
             <p className="text-gray-500">
               Take our comprehensive 5-minute personality test to find out what
