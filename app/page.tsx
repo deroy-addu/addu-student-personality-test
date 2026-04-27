@@ -40,7 +40,7 @@ function Header() {
           </hgroup>
           <div className="flex items-center gap-4">
             <Link
-              href={links.quiz}
+              href={links.quiz.path}
               className="rounded-md bg-gray-900 px-4 py-2 text-white"
             >
               Start Quiz
