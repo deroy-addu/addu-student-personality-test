@@ -3,7 +3,7 @@
 import { links } from "@/constants";
 import { usePathname } from "next/navigation";
 
-const allowedPaths = [links.home, links.login, links.results];
+const allowedPaths = [links.home, links.results];
 
 export default function GlobalFooter() {
   const pathname = usePathname();
