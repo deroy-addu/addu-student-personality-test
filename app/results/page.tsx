@@ -30,6 +30,30 @@ export default function ResultsPage() {
         <PersonalitySummary scores={quizResult.score.personality} />
       </CapWidth>
       <CapWidth>
+        <section className="space-y-6 rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+          <p>A <span className="font-bold text-lg">crammer</span> is a student who studies at the last minute, trying to absorb as much as possible right before an exam. While this can sometimes work, it relies on managing energy, focus, and timing. This means students with intense study bursts, taking brief rests or naps to help retention, and avoiding distractions right before sleep so information sticks better. However, sudden changes in routine or unhealthy habits can hurt one's performance more than help.</p>
+          <p>To make this approach more effective, combine it with <a href="https://hubstaff.com/blog/pareto-principle/" className="text-blue-600 underline">High-Priority Planning (the 80/20 Rule)</a>. Focus on the most important topics that are most likely to appear on the exam instead of trying to cover everything. Pair this with short, focused study sessions and quick rest periods to maximize both efficiency and memory.</p>
+        </section>
+      </CapWidth>
+      <CapWidth>
+        <section className="space-y-6 rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+          <p>A <span className="font-bold text-lg">balanced</span> student is one who manages academics alongside their physical, emotional, and social well-being instead of focusing only on schoolwork. This type of student understands that good performance isn't just about studying more—it also depends on proper sleep, healthy habits, relationships, and time for rest and activities. When students are overly tired, stressed, or neglect other parts of life, their learning and performance actually suffer.</p>
+          <p>To support this, a useful study technique is <a href="https://lsc.cornell.edu/how-to-study/studying-for-and-taking-exams/guidelines-for-creating-a-study-schedule/" className="text-blue-600 underline">balanced scheduling</a> (work–rest cycles)—plan study time alongside breaks, sleep, exercise, and leisure so your energy and focus stay consistent. Instead of overloading on study, mix focused sessions with recovery time (like hobbies or relaxation), which helps maintain motivation, reduce burnout, and improve overall learning efficiency.</p>
+        </section>
+      </CapWidth>
+      <CapWidth>
+        <section className="space-y-6 rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+          <p>A <span className="font-bold text-lg">responsible</span> student is someone who consistently meets expectations—completing work on time, preparing for class, and actively participating. But being responsible doesn't mean being perfect; it also means taking initiative when things go wrong—asking for help, communicating with teachers, doing partial work instead of nothing, and finding ways to stay on track even when struggling. Responsibility is really about effort, follow-through, and problem-solving, not just getting everything done flawlessly.</p>
+          <p>A helpful study technique for this type is the <a href="https://www.todoist.com/productivity-methods/pomodoro-technique" className="text-blue-600 underline">Pomodoro Technique</a>—work in short, focused intervals (about 25 minutes), then take a 5-minute break. This keeps you productive without burning out, makes it easier to stay consistent with responsibilities, and helps you steadily complete tasks step by step.</p>
+        </section>
+      </CapWidth>
+      <CapWidth>
+        <section className="space-y-6 rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
+          <p>A <span className="font-bold text-lg">procrastinator</span> isn't just lazy—they delay tasks to avoid stress, fear, or self-doubt, often telling themselves they "work better under pressure." This habit protects their self-esteem but usually leads to more anxiety and rushed results. To overcome it, start by understanding why you procrastinate, then break tasks into small, manageable steps and begin with something easy to build momentum.</p>
+          <p>Use simple study techniques like short timed sessions (e.g., 10–25 minutes), the <a href="https://hubstaff.com/blog/swiss-cheese-method/" className="text-blue-600 underline">Swiss cheese</a> method (doing small parts at a time), active learning (asking questions, summarizing), and rewarding yourself after progress. Stay focused on personal goals instead of fear, study in a distraction-free space, and keep expectations realistic—consistent small efforts are what actually reduce procrastination over time.</p>
+        </section>
+      </CapWidth>
+      <CapWidth>
         <TraitBreakdown scores={quizResult.score.characteristic} />
       </CapWidth>
     </div>
