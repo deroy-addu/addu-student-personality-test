@@ -1,5 +1,5 @@
 import AdduImage from "@/assets/addu.png";
-import { links, personalities } from "@/constants";
+import { links, personalityStyles } from "@/constants";
 import { Personalities } from "@/enums";
 import CapWidth from "@/layouts/CapWidth";
 import Image from "next/image";
@@ -93,7 +93,7 @@ function TypesOfPersonalities() {
         </hgroup>
         <div className="my-12 grid grid-cols-4 gap-4">
           {typesOfPersonalities.map(({ personality, description }) => {
-            const { Icon, color, bgSubtle } = personalities[personality];
+            const { Icon, color, bgSubtle } = personalityStyles[personality];
 
             return (
               <div

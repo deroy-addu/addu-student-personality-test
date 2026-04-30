@@ -1,5 +1,5 @@
 import CapWidth from "@/layouts/CapWidth";
-import { personalities } from "@/constants";
+import { personalityStyles } from "@/constants";
 import { Personalities } from "@/enums";
 import { FaChartPie } from "react-icons/fa6";
 
@@ -25,7 +25,7 @@ const personalitySummary = {
 
 function PersonalitySummary() {
   const { Icon, color, bg, bgSubtle } =
-    personalities[personalitySummary.personality];
+    personalityStyles[personalitySummary.personality];
 
   return (
     <section className="flex items-center justify-center gap-12">
@@ -35,7 +35,7 @@ function PersonalitySummary() {
           className={`absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-sm font-semibold whitespace-nowrap text-white ${bg}`}
         >
           Type{" "}
-          {Object.keys(personalities).indexOf(personalitySummary.personality) +
+          {Object.keys(Personalities).indexOf(personalitySummary.personality) +
             1}
         </span>
       </div>

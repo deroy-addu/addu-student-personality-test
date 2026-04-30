@@ -6,7 +6,7 @@ import {
   FaScaleBalanced,
 } from "react-icons/fa6";
 
-export const personalities = {
+export const personalityStyles = {
   [Personalities.Procrastinator]: {
     Icon: FaHourglassHalf,
     color: "text-procrastinator",
