@@ -1,93 +1,50 @@
-/**
- * @remarks Computation is done by AI.
- */
-
+import { characteristics } from "@/data";
 import { Characteristics, Personalities } from "@/enums";
 
 /**
- * Converts answer counts into percentage per personality.
- *
- * ```text
- * For each personality:
- *
- *   percentage =
- *     (number of answers for that personality / total number of questions)
- *     * 100
- *
- * All percentages combined should add up to 100%.
- * ```
+ * Shows how much of a personality the respondent is.
  */
-export function personalityScore(
-  answerCounts: Record<Personalities, number>,
+export type PersonalityScore = Record<Personalities, number>;
+
+export function computePersonalityScore(
+  personalityCounts: Record<Personalities, number>,
   totalQuestions: number,
-): Record<Personalities, number> {
-  const percentages = {} as Record<Personalities, number>;
-
-  const entries = Object.entries(answerCounts) as [Personalities, number][];
-
-  for (const [personality, count] of entries) {
-    const ratio = count / totalQuestions;
-    const percentage = ratio * 100;
-
-    percentages[personality] = percentage;
+) {
+  if (totalQuestions <= 0) {
+    throw new Error("Total questions must be greather than 0.");
   }
 
-  return percentages;
+  const personalityScore = {} as PersonalityScore;
+
+  for (const personalityKey of Object.values(Personalities)) {
+    personalityScore[personalityKey] =
+      (personalityCounts[personalityKey] / totalQuestions) * 100;
+  }
+
+  return personalityScore;
 }
 
 /**
- * Computes characteristic scores using personality percentages and weights.
- *
- * ```text
- * For each characteristic:
- *
- *   1. Multiply each personality percentage by its weight
- *   2. Add all those values together
- *   3. Divide the total by 100
- *
- * Formula:
- *
- *   characteristic_score =
- *     sum(personality_percentage * weight) / 100
- *
- * Notes:
- * - Weights usually range from 0 to 1
- * - Final score will also be between 0 and 1
- * ```
+ * Shows how much of a characteristic the respondent possess.
  */
-export function characteristicScore(
-  personalityPercentages: Record<Personalities, number>,
-  weightsByCharacteristic: Record<
-    Characteristics,
-    Record<Personalities, number>
-  >,
-): Record<Characteristics, number> {
-  const results = {} as Record<Characteristics, number>;
+export type CharacteristicScore = Record<Characteristics, number>;
 
-  const characteristicEntries = Object.entries(weightsByCharacteristic) as [
-    Characteristics,
-    Record<Personalities, number>,
-  ][];
+export function computeCharacteristicScore(
+  personalityScore: Record<Personalities, number>,
+) {
+  const characteristicScore = {} as CharacteristicScore;
 
-  for (const [characteristic, weightsPerPersonality] of characteristicEntries) {
+  for (const characteristicKey of Object.values(Characteristics)) {
     let weightedSum = 0;
 
-    const personalityEntries = Object.entries(personalityPercentages) as [
-      Personalities,
-      number,
-    ][];
-
-    for (const [personality, percentage] of personalityEntries) {
-      const weight = weightsPerPersonality[personality];
-      const contribution = percentage * weight;
-
-      weightedSum += contribution;
+    for (const personalityKey of Object.values(Personalities)) {
+      weightedSum +=
+        personalityScore[personalityKey] *
+        characteristics[characteristicKey][personalityKey];
     }
 
-    const normalizedScore = weightedSum / 100;
-
-    results[characteristic] = normalizedScore;
+    characteristicScore[characteristicKey] = weightedSum / 100;
   }
 
-  return results;
+  return characteristicScore;
 }
