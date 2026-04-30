@@ -5,7 +5,12 @@ export function computePersonalityScore(
   answers: number[],
   totalQuestions: number,
 ) {
-  const personalityCounts = {} as Record<Personalities, number>;
+  const personalityCounts = {
+    [Personalities.Procrastinator]: 0,
+    [Personalities.Crammer]: 0,
+    [Personalities.Balanced]: 0,
+    [Personalities.Responsible]: 0,
+  };
 
   for (const answer of answers) {
     personalityCounts[choicePersonalityLookup[answer]] += 1;
