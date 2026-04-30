@@ -1,10 +1,16 @@
-import { characteristics } from "@/data";
+import { characteristics, choicePersonalityLookup } from "@/data";
 import { Characteristics, Personalities } from "@/enums";
 
 export function computePersonalityScore(
-  personalityCounts: Record<Personalities, number>,
+  answers: number[],
   totalQuestions: number,
 ) {
+  const personalityCounts = {} as Record<Personalities, number>;
+
+  for (const answer of answers) {
+    personalityCounts[choicePersonalityLookup[answer]] += 1;
+  }
+
   if (totalQuestions <= 0) {
     throw new Error("Total questions must be greather than 0.");
   }
