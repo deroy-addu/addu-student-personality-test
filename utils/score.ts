@@ -24,7 +24,7 @@ export function computePersonalityScore(
 
   for (const personalityKey of Object.values(Personalities)) {
     personalityScore[personalityKey] =
-      (personalityCounts[personalityKey] / totalQuestions) * 100;
+      personalityCounts[personalityKey] / totalQuestions;
   }
 
   return personalityScore;
@@ -44,7 +44,7 @@ export function computeCharacteristicScore(
         characteristics[characteristicKey][personalityKey];
     }
 
-    characteristicScore[characteristicKey] = weightedSum / 100;
+    characteristicScore[characteristicKey] = weightedSum;
   }
 
   return characteristicScore;
