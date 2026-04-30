@@ -1,14 +1,7 @@
+import CapWidth from "@/layouts/CapWidth";
 import { personalities } from "@/constants";
 import { Personalities } from "@/enums";
-import CapWidth from "@/layouts/CapWidth";
-import { BiSolidZap } from "react-icons/bi";
-import {
-  FaBookOpen,
-  FaBrain,
-  FaChartPie,
-  FaCheck,
-  FaPeopleGroup,
-} from "react-icons/fa6";
+import { FaChartPie } from "react-icons/fa6";
 
 export default function ResultsPage() {
   return (
@@ -17,10 +10,7 @@ export default function ResultsPage() {
         <PersonalitySummary />
       </CapWidth>
       <CapWidth>
-        <div className="grid grid-cols-2 gap-12">
-          <TraitBreakdown />
-          <KeyStrengths />
-        </div>
+        <TraitBreakdown />
       </CapWidth>
     </div>
   );
@@ -115,83 +105,6 @@ function TraitBreakdown() {
             </div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-const keyStrengths = [
-  {
-    description: "Consistent Pacing",
-    statement: "You rarely need to pull all-nighters.",
-    style: {
-      Icon: FaCheck,
-      textColor: "text-blue-500",
-      backgroundColor: "bg-blue-100",
-    },
-  },
-  {
-    description: "Clear Priorities",
-    statement: "You know when to study and when to rest.",
-    style: {
-      Icon: FaBrain,
-      textColor: "text-blue-500",
-      backgroundColor: "bg-blue-100",
-    },
-  },
-  {
-    description: "Group Facilitator",
-    statement: "Great at keeping team projects on track.",
-    style: {
-      Icon: FaPeopleGroup,
-      textColor: "text-blue-500",
-      backgroundColor: "bg-blue-100",
-    },
-  },
-  {
-    description: "Holistic Learning",
-    statement: "You absorb concepts rather than memorizing.",
-    style: {
-      Icon: FaBookOpen,
-      textColor: "text-blue-500",
-      backgroundColor: "bg-blue-100",
-    },
-  },
-];
-
-function KeyStrengths() {
-  return (
-    <section className="rounded-md bg-white p-8 shadow-md/5 outline outline-gray-300">
-      <hgroup className="flex items-center gap-2 text-lg">
-        <BiSolidZap className="text-gray-900" />
-        <h1 className="font-semibold">Key Strengths</h1>
-      </hgroup>
-      <div className="mt-4 grid grid-cols-2 gap-4">
-        {keyStrengths.map(
-          (
-            {
-              description,
-              statement,
-              style: { Icon, textColor, backgroundColor },
-            },
-            i,
-          ) => (
-            <div
-              key={i}
-              className="flex items-center gap-4 rounded-md border border-gray-200 p-4"
-            >
-              <div
-                className={`w-fit rounded-md p-4 text-xl ${backgroundColor}`}
-              >
-                <Icon className={`${textColor}`} />
-              </div>
-              <div>
-                <h2 className="font-semibold">{description}</h2>
-                <p className="text-sm text-gray-500">{statement}</p>
-              </div>
-            </div>
-          ),
-        )}
       </div>
     </section>
   );
