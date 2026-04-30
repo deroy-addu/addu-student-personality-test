@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 
 /**
  * Redirects to the given path if quiz is complete.
+ *
+ * Note: This hook does not know if the storage updates.
  */
 export function useQuizCompletionRedirect(to: string) {
   const router = useRouter();
