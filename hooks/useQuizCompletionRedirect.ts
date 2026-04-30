@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
  */
 export function useQuizCompletionRedirect(to: string) {
   const router = useRouter();
-  const [value] = useLocalStorage<QuizResults>(StorageKeys.QuizResults);
+  const [quizResults] = useLocalStorage<QuizResults>(StorageKeys.QuizResults);
 
   React.useEffect(() => {
-    if (value) {
+    if (quizResults) {
       router.push(to);
     }
-  }, [router, to, value]);
+  }, [router, to, quizResults]);
 }
