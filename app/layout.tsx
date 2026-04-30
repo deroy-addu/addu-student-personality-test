@@ -39,8 +39,21 @@ export default function RootLayout({
             </div>
           </div>
           <GlobalFooter />
+          <UserNotice />
         </body>
       </QuizProvider>
     </html>
+  );
+}
+
+function UserNotice() {
+  return (
+    <div className="fixed bottom-4 left-4 z-50 max-w-xs rounded-md border border-yellow-200 bg-yellow-50 p-4 shadow-md">
+      <p className="text-sm font-semibold text-yellow-800">Work in progress</p>
+      <p className="mt-1 text-xs text-yellow-700">
+        This page is not yet complete and may contain bugs or unstable
+        implementations. Do not consider it production-ready.
+      </p>
+    </div>
   );
 }
