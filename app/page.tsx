@@ -26,6 +26,7 @@ function Header() {
               src={AdduImage}
               alt="Addu Image"
               className="w-full rounded-md"
+              loading="eager"
             />
           </div>
           <div className="space-y-8 self-center">
