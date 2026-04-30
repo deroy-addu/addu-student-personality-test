@@ -1,3 +1,5 @@
+import { Personalities } from "@/enums";
+
 // prettier-ignore
 export const questions = [
   "If you are given a written report due in 7 days, how do you usually plan and execute the work from start to finish?",
@@ -23,13 +25,16 @@ export const questions = [
 ];
 
 /**
- * Each subarray index elements corresponds to a personality type.
- *
- * - `0` - Procrastinator
- * - `1` - Crammer
- * - `3` - Balanced
- * - `4` - Responsible
+ * A parallel array for `choices` to associate each choice to a
+ * personality.
  */
+export const choicePersonalityLookup = [
+  Personalities.Procrastinator,
+  Personalities.Crammer,
+  Personalities.Balanced,
+  Personalities.Responsible,
+];
+
 // prettier-ignore
 export const choices = [
   [
