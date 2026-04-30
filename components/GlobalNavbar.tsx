@@ -55,12 +55,12 @@ export default function GlobalNavbar() {
                 );
               })}
             </ul>
-            <Link
+            {/* <Link
               href={links.login.path}
               className="rounded-md bg-gray-900 px-4 py-2 text-white"
             >
               Login
-            </Link>
+            </Link> */}
           </div>
         </div>
       </CapWidth>
