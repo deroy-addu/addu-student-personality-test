@@ -4,6 +4,7 @@ import "./globals.css";
 import QuizProvider from "@/contexts/QuizContext";
 import GlobalNavbar from "@/components/GlobalNavbar";
 import GlobalFooter from "@/components/GlobalFooter";
+import { MobileGate } from "@/components/MobileGate";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -32,14 +33,16 @@ export default function RootLayout({
     >
       <QuizProvider>
         <body className="flex min-h-screen flex-col">
-          <div className="flex min-h-screen flex-1 flex-col">
-            <GlobalNavbar />
-            <div className="flex flex-1 flex-col justify-center py-16">
-              {children}
+          <MobileGate>
+            <div className="flex min-h-screen flex-1 flex-col">
+              <GlobalNavbar />
+              <div className="flex flex-1 flex-col justify-center py-16">
+                {children}
+              </div>
             </div>
-          </div>
-          <GlobalFooter />
-          <UserNotice />
+            <GlobalFooter />
+            <UserNotice />
+          </MobileGate>
         </body>
       </QuizProvider>
     </html>
