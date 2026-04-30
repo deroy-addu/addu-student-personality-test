@@ -1,4 +1,4 @@
-export const enum Personalities {
+export enum Personalities {
   Procrastinator = "Procrastinator",
   Crammer = "Crammer",
   Balanced = "Balanced",

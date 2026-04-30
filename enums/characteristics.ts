@@ -1,3 +1,3 @@
-export const enum Characteristics {
+export enum Characteristics {
   TimeManagement = "TimeManagement",
 }
