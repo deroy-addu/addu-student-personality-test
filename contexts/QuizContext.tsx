@@ -17,6 +17,12 @@ const QuizContext = React.createContext<{
      */
     choices: string[][];
 
+    /**
+     * The chosen choice indices. This array is in parallel with `questions`
+     * and `choices`.
+     */
+    answers: number[];
+
     current: {
       /**
        * The current question.
@@ -45,12 +51,6 @@ const QuizContext = React.createContext<{
      */
     max: number;
   };
-
-  /**
-   * The chosen choice indices. This array is in parallel with `questions`
-   * and `choices`.
-   */
-  answers: number[];
 
   /**
    * Moves to the previous question.
@@ -109,6 +109,7 @@ export default function QuizProvider({ children }: React.PropsWithChildren) {
         quiz: {
           questions,
           choices,
+          answers,
           current: {
             question: questions[current],
             choices: choices[current],
@@ -119,7 +120,6 @@ export default function QuizProvider({ children }: React.PropsWithChildren) {
           current: current + 1,
           max: questions.length,
         },
-        answers,
         previous,
         next,
         answer,
