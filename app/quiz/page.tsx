@@ -2,8 +2,15 @@
 
 import { links } from "@/constants";
 import { useQuizContext } from "@/contexts/QuizContext";
+import { StorageKeys } from "@/data/storage";
+import { useLocalStorage } from "@/hooks";
+import { useQuizCompletionRedirect } from "@/hooks/useQuizCompletionRedirect";
 import CapWidth from "@/layouts/CapWidth";
 import { cn } from "@/utils";
+import {
+  computeCharacteristicScore,
+  computePersonalityScore,
+} from "@/utils/score";
 import { useRouter } from "next/navigation";
 import {
   FaArrowLeft,
@@ -13,6 +20,8 @@ import {
 } from "react-icons/fa6";
 
 export default function QuizPage() {
+  useQuizCompletionRedirect(links.results.path);
+
   return (
     <>
       <CapWidth>
@@ -107,6 +116,13 @@ const Navigator = () => {
     next,
   } = useQuizContext();
   const router = useRouter();
+
+  const { quiz, page } = useQuizContext();
+
+  const [, setQuizResults] = useLocalStorage<QuizResults>(
+    StorageKeys.QuizResults,
+  );
+
   const isLastQuestion = current === max;
 
   return (
@@ -120,7 +136,23 @@ const Navigator = () => {
       </button>
       <button
         onClick={() => {
+          const personalityScore = computePersonalityScore(
+            quiz.answers,
+            page.max,
+          );
+
+          const characteristicScore =
+            computeCharacteristicScore(personalityScore);
+
           if (isLastQuestion) {
+            setQuizResults({
+              quiz,
+              score: {
+                personality: personalityScore,
+                characteristic: characteristicScore,
+              },
+            });
+
             router.push(links.results.path);
           } else {
             next();
