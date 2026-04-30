@@ -1,11 +1,6 @@
 import { characteristics } from "@/data";
 import { Characteristics, Personalities } from "@/enums";
 
-/**
- * Shows how much of a personality the respondent is.
- */
-export type PersonalityScore = Record<Personalities, number>;
-
 export function computePersonalityScore(
   personalityCounts: Record<Personalities, number>,
   totalQuestions: number,
@@ -23,11 +18,6 @@ export function computePersonalityScore(
 
   return personalityScore;
 }
-
-/**
- * Shows how much of a characteristic the respondent possess.
- */
-export type CharacteristicScore = Record<Characteristics, number>;
 
 export function computeCharacteristicScore(
   personalityScore: Record<Personalities, number>,
