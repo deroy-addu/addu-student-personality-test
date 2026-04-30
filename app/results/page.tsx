@@ -1,5 +1,6 @@
 import { personalities } from "@/constants";
 import { Personalities } from "@/enums";
+import CapWidth from "@/layouts/CapWidth";
 import { BiSolidZap } from "react-icons/bi";
 import {
   FaBookOpen,
@@ -12,21 +13,15 @@ import {
 export default function ResultsPage() {
   return (
     <div className="space-y-16">
-      <div className="grid grid-cols-[auto_minmax(0,1500)_auto]">
-        <div />
-        <div>
-          <PersonalitySummary />
-        </div>
-        <div />
-      </div>
-      <div className="grid grid-cols-[auto_minmax(0,1500)_auto]">
-        <div />
+      <CapWidth>
+        <PersonalitySummary />
+      </CapWidth>
+      <CapWidth>
         <div className="grid grid-cols-2 gap-12">
           <TraitBreakdown />
           <KeyStrengths />
         </div>
-        <div />
-      </div>
+      </CapWidth>
     </div>
   );
 }

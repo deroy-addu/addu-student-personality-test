@@ -1,6 +1,7 @@
 import AdduImage from "@/assets/addu.png";
 import { links, personalities } from "@/constants";
 import { Personalities } from "@/enums";
+import CapWidth from "@/layouts/CapWidth";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCheck, FaRegClock, FaShieldHalved } from "react-icons/fa6";
@@ -17,41 +18,41 @@ export default function LandingPage() {
 
 function Header() {
   return (
-    <header className="grid grid-cols-[auto_minmax(0,1500)_auto]">
-      <div />
-      <div className="grid grid-cols-2 gap-12">
-        <div>
-          <Image
-            src={AdduImage}
-            alt="Addu Image"
-            className="w-full rounded-md"
-          />
-        </div>
-        <div className="space-y-8 self-center">
-          <hgroup className="space-y-4">
-            <h1 className="font-serif text-4xl font-semibold">
-              Discover your learning style.
-            </h1>
-            <p className="text-gray-500">
-              Take our comprehensive 5-minute personality test to find out what
-              kind of student you really are. Optimize your study habits based
-              on your unique profile.
-            </p>
-          </hgroup>
-          <div className="flex items-center gap-4">
-            <Link
-              href={links.quiz.path}
-              className="rounded-md bg-gray-900 px-4 py-2 text-white"
-            >
-              Start Quiz
-            </Link>
-            <small className="flex items-center gap-1 text-sm text-gray-500">
-              <FaRegClock /> Takes 5 minutes
-            </small>
+    <header>
+      <CapWidth>
+        <div className="grid grid-cols-2 gap-12">
+          <div>
+            <Image
+              src={AdduImage}
+              alt="Addu Image"
+              className="w-full rounded-md"
+            />
+          </div>
+          <div className="space-y-8 self-center">
+            <hgroup className="space-y-4">
+              <h1 className="font-serif text-4xl font-semibold">
+                Discover your learning style.
+              </h1>
+              <p className="text-gray-500">
+                Take our comprehensive 5-minute personality test to find out
+                what kind of student you really are. Optimize your study habits
+                based on your unique profile.
+              </p>
+            </hgroup>
+            <div className="flex items-center gap-4">
+              <Link
+                href={links.quiz.path}
+                className="rounded-md bg-gray-900 px-4 py-2 text-white"
+              >
+                Start Quiz
+              </Link>
+              <small className="flex items-center gap-1 text-sm text-gray-500">
+                <FaRegClock /> Takes 5 minutes
+              </small>
+            </div>
           </div>
         </div>
-      </div>
-      <div />
+      </CapWidth>
     </header>
   );
 }
@@ -78,9 +79,8 @@ const typesOfPersonalities = [
 
 function TypesOfPersonalities() {
   return (
-    <section className="grid grid-cols-[auto_minmax(0,1500)_auto] bg-gray-100 py-12">
-      <div />
-      <div>
+    <section className="bg-gray-100 py-12">
+      <CapWidth>
         <hgroup className="space-y-4 text-center">
           <h1 className="font-serif text-4xl">
             Four Types of Student Personalities
@@ -112,8 +112,7 @@ function TypesOfPersonalities() {
             );
           })}
         </div>
-      </div>
-      <div />
+      </CapWidth>
     </section>
   );
 }
@@ -136,29 +135,29 @@ const privacyAndLogistics = [
 
 function PrivacyAndLogistics() {
   return (
-    <section className="grid grid-cols-[auto_minmax(0,1500)_auto]">
-      <div />
-      <div className="mx-auto w-fit space-y-4 rounded-md border border-gray-200 bg-gray-50 p-12">
-        <hgroup className="flex items-center gap-4 text-xl">
-          <FaShieldHalved className="text-2xl" />
-          <h1 className="font-serif">Privacy & Logistics</h1>
-        </hgroup>
-        <ul className="space-y-2 text-gray-500">
-          {privacyAndLogistics.map(({ title, statement }, i) => (
-            <li
-              key={i}
-              className="flex items-center gap-2"
-            >
-              <FaCheck className="text-emerald-500" />
-              <p>
-                <span className="font-semibold">{title}: </span>
-                {statement}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div />
+    <section>
+      <CapWidth>
+        <div className="mx-auto w-fit space-y-4 rounded-md border border-gray-200 bg-gray-50 p-12">
+          <hgroup className="flex items-center gap-4 text-xl">
+            <FaShieldHalved className="text-2xl" />
+            <h1 className="font-serif">Privacy & Logistics</h1>
+          </hgroup>
+          <ul className="space-y-2 text-gray-500">
+            {privacyAndLogistics.map(({ title, statement }, i) => (
+              <li
+                key={i}
+                className="flex items-center gap-2"
+              >
+                <FaCheck className="text-emerald-500" />
+                <p>
+                  <span className="font-semibold">{title}: </span>
+                  {statement}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </CapWidth>
     </section>
   );
 }

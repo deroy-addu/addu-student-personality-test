@@ -2,6 +2,7 @@
 
 import { links } from "@/constants";
 import { useQuizContext } from "@/contexts/QuizContext";
+import CapWidth from "@/layouts/CapWidth";
 import { cn } from "@/utils";
 import { useRouter } from "next/navigation";
 import {
@@ -14,13 +15,11 @@ import {
 export default function QuizPage() {
   return (
     <>
-      <div className="grid grid-cols-[auto_minmax(0,1500)_auto] place-items-center">
-        <div />
+      <CapWidth>
         <div className="mx-auto w-full space-y-12">
           <Question />
         </div>
-        <div />
-      </div>
+      </CapWidth>
       <Progress />
     </>
   );
