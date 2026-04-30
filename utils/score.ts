@@ -30,9 +30,7 @@ export function computePersonalityScore(
   return personalityScore;
 }
 
-export function computeCharacteristicScore(
-  personalityScore: Record<Personalities, number>,
-) {
+export function computeCharacteristicScore(personalityScore: PersonalityScore) {
   const characteristicScore = {} as CharacteristicScore;
 
   for (const characteristicKey of Object.values(Characteristics)) {
